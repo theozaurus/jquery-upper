@@ -1,0 +1,106 @@
+jQuery Upper [![Build status](https://secure.travis-ci.org/theozaurus/jquery-upper.png)](http://travis-ci.org/theozaurus/jquery-upper)
+============
+
+Designed to take the hassle out of dealing with file upload progress using
+extensions like [nginx-upload-progress-module](https://github.com/masterzen/nginx-upload-progress-module).
+
+It provides the callbacks nescessary to then build the UI exactly how you desire.
+
+Features
+========
+
+- Detect file size
+- Poll for progress
+- Prevent large files from being uploaded
+- Prevent wrong type of file from being uploaded
+- Uses callbacks so that UI is decoupled from the logic for tracking the
+  download
+- Multiple file upload
+- Helpers for displaying quantities in sane ways ('9.46 MB' rather than
+  '9921300' bytes )
+- Parses [JSend](http://labs.omniti.com/labs/jsend) response for processing the
+  result
+
+Usage
+=====
+
+Assuming a server is setup correctly to track uploads, and provides a response
+in [JSend](http://labs.omniti.com/labs/jsend) format.
+
+From the Javascript you need to initalize the plugin for the relevant form:
+
+    var buildUI = function(result){
+      console.info(result.file().name(),result.sizeTotal(),result.progress());
+    };
+
+    $('form.file-upload').upper({
+      onUpdate: buildUI,                 // Callback to deal with the events
+      max_size: 10 * Math.pow(1024,2),   // Optional
+      accepted_extensions: ['mp3','wma'] // Optional
+    })
+
+Look at `src/upper/result.js` to get an understanding for what you can report
+on.
+
+Tests
+=====
+
+All of the tests are written in [Jasmine](http://pivotal.github.com/jasmine/).
+[Sprockets](https://github.com/sstephenson/sprockets) is used to describe
+dependencies between the files. To run the tests, you will first need to install
+[Ruby](http://ruby-lang.org) and [Bundler](http://gembundler.com/). Once you
+have this:
+
+    $ bundle install
+    $ rake jasmine
+
+Open your browser to [http://localhost:8888](http://localhost:8888)
+
+If you want to run the tests directly in the console just type:
+
+    $ rake jasmine:ci
+    /Users/theo/.rvm/rubies/ruby-1.9.3-p0/bin/ruby -S rspec spec/javascripts/support/jasmine_runner.rb --colour --format progress
+    [2012-03-15 15:46:50] INFO  WEBrick 1.3.1
+    [2012-03-15 15:46:50] INFO  ruby 1.9.3 (2011-10-30) [x86_64-darwin11.1.0]
+    [2012-03-15 15:46:50] INFO  WEBrick::HTTPServer#start: pid=39919 port=63714
+    Waiting for jasmine server on 63714...
+    jasmine server started.
+    Waiting for suite to finish in browser ...
+    ..........................................
+
+Or you can check the current status of master using [Travis](http://travis-ci.org/#!/theozaurus/jquery-upper)
+
+Building
+========
+
+Follow the instructions above to get Ruby and Bundler installed then:
+
+    $ rake build
+
+This will create the file `build/jquery.upper.js`. Including all of the external
+dependencies, except for `jQuery`.
+
+Alternatively if you are using something like Ruby on Rails [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html)
+then you can copy the contents of the `src` folder straight to `vendor/assets/javascript` and
+use Sprockets to deal with the dependencies.
+
+Example
+=======
+
+The example requires a built version of the library. Then open
+`examples/index.html` in your browser.
+
+This will not actually upload any files anywhere, but simulates the events
+triggered so you can get a feel for how it operates. The file
+`examples/javascript/upload_list.js` demonstrates how you might build a UI to
+use these events.
+
+TODO
+====
+
+- Expand testing
+- Alter error messaging to raise types of errors, rather than just messages
+- Add support for HTML5 File API
+- More UI examples
+- More documentation
+- ...

@@ -1,0 +1,165 @@
+body {
+  font-family: Arimo, sans-serif;
+  font-size: 0.8em;
+}
+
+/* Styles for the jquery.fileform.js */
+
+.button {
+  color: #424242;
+  cursor: pointer;
+
+  font-family: "Arimo", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
+
+  padding: 8px 24px;
+
+  background-color: #CCC;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#CCC));
+  background-image: -moz-linear-gradient(0% 100% 90deg, #CCC, #FAFAFA);
+
+  border: 1px solid #8E8E8E;
+  border-style: solid;
+  border-color: #7B7B7B #737373 #636363 #737373;
+
+  border-radius: 3px;
+
+  text-shadow: rgba(255, 255, 255, 0.9) 0 1px 0;
+}
+
+.button.hover {
+  background-color: #DDD;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#DDD));
+  background-image: -moz-linear-gradient(0% 100% 90deg, #DDD, white);
+  color: #B48;
+}
+
+
+/* Styles for the upload_list.js */
+
+.icon{
+  padding-left: 3em;
+  position: relative;
+}
+.icon:before {
+  content: '';
+  display: inline-block;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  height: 24px;
+  width: 24px;
+  margin-top: -6px;
+
+  background-image: url(../images/sprite-media_types-24x24.png);
+  background-position: -24px 0;
+  background-repeat: no-repeat;
+}
+.icon-audio:before { background-position: 0 0; }
+.icon-document:before { background-position: -24px 0; }
+.icon-image:before { background-position: -48px 0; }
+
+.upload-list {
+  color: #7e7e7e;
+  padding: 1em 0;
+  width: 600px;
+}
+
+.upload-list-item {
+  /* Rounding */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+
+  border: 1px solid #eeeeee;
+  font-size: 11px;
+  margin-top: 1em;
+  padding: 1em;
+}
+.upload-list-item:first-child {
+  margin-top: 0;
+}
+.upload-list-item:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+/* State */
+.upload-list-item-errored {
+  background-color: #FFF0F0;
+}
+.upload-list-item-errored:nth-child(odd) {
+  background-color: #FFE0E0;
+}
+
+.upload-list-item-filetype {
+  position: relative;
+}
+
+.upload-list-item-progress {
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  height: 1.2em;
+  left: 3em;
+  position: relative;
+  width: 84%;
+  box-sizing: border-box;
+}
+/* State */
+.upload-list-item-completed .upload-list-item-progress {
+  background-color: transparent;
+  border: none;
+}
+
+.upload-list-item-message {
+  padding-left: 3em;
+}
+
+.upload-list-item-progress-bar {
+  /* Shadow */
+  -webkit-box-shadow: inset 1px 1px 0.5em rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 1px 1px 0.5em rgba(0, 0, 0, 0.5);
+  box-shadow: inset 1px 1px 0.5em rgba(0, 0, 0, 0.5);
+
+  background: url(../images/bg-progress-grey-50x50.gif) 0 0 repeat;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+/* State */
+.upload-list-item-completed .upload-list-item-progress-bar {
+  display: none;
+}
+.upload-list-item-uploaded .upload-list-item-progress-bar {
+  background: url(../images/bg-progress-pink-50x50.gif) 0 0 repeat;
+}
+
+
+.upload-list-item-value {
+  margin-top: -0.6em;
+  padding: 0 .5em;
+  position: absolute;
+  right: -4em;
+  top: 50%;
+}
+/* State */
+.upload-list-item-completed .upload-list-item-value,
+.upload-list-item-errored   .upload-list-item-value {
+  display: none;
+}
+
+.upload-list-item-cancel {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  text-indent: -5000em;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  background-image: url("../images/close-16x16.png");
+  background-repeat: no-repeat;
+}
