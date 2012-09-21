@@ -40,7 +40,8 @@ From the Javascript you need to initalize the plugin for the relevant form:
     })
 
 Look at `src/upper/result.js` to get an understanding for what you can report
-on.
+on. Checkout `examples/javascript/upload_list.j` for how you might deal with the
+DOM.
 
 Tests
 =====
