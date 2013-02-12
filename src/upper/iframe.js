@@ -18,7 +18,7 @@
 
     var createIFrame = function(form){
       var frame_id = generateID();
-      var html = "<iframe id='"+frame_id+"' name='"+frame_id+"' width='0' height='0' frameborder='0' border='0' src='about:blank'></iframe>";
+      var html = "<iframe id='"+frame_id+"' name='"+frame_id+"' width='0' height='0' frameborder='0' border='0' src='about:blank' style='display:none;'></iframe>";
       $('body').append(html);
       return $('#' + frame_id);
     };
