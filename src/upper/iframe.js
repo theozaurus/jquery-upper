@@ -38,7 +38,8 @@
 
       // Add callback when iframe loads to update result
       $iframe.load(function(){
-        var iframe_result = new scope.IFrameParser($iframe.contents());
+        var body = $iframe.contents().find("body").text();
+        var iframe_result = new scope.IFrameParser(body);
         if(iframe_result.isSuccess()){
           result.completed(iframe_result.data());
         } else {

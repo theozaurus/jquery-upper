@@ -86,10 +86,14 @@
       this.id = function(){ return id; };
 
       this.progress = function(){
-        var v = that.sizeUploaded() / that.sizeTotal();
-        v = v >= 0 ? v : 0;
-        v = v <= 1 ? v : 1;
-        return v;
+        if(that.hasStarted()){
+          var v = that.sizeUploaded() / that.sizeTotal();
+          v = v >= 0 ? v : 0;
+          v = v <= 1 ? v : 1;
+          return v;
+        } else {
+          return 1;
+        }
       };
 
       this.humanSizeUploaded = function(){
@@ -123,10 +127,10 @@
       this.hasUploaded  = function(){ return that.state() == "uploaded";  };
       this.hasCompleted = function(){ return that.state() == "completed"; };
       this.hasErrored   = function(){ return that.state() == "errored";   };
-      this.hasCancelled = function(){ return that.state() == "errored";   };
+      this.hasCancelled = function(){ return that.state() == "cancelled";   };
 
       this.hasEnded = function(){
-        return that.hasCancelled()|| that.hasErrored() || that.hasCompleted;
+        return that.hasCancelled()|| that.hasErrored() || that.hasCompleted();
       };
 
       //// Control state

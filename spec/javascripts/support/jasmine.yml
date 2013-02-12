@@ -11,12 +11,13 @@
 #   - dist/**/*.js
 #
 src_files:
-    - src/upper.js
+    - vendor/callback.js
+    - vendor/jquery.js
+    - src/jquery.upper.js
     - src/upper/result.js
     - src/upper/file.js
     - src/upper/iframe_parser.js
     - src/upper/progress_parser.js
-    - vendor/jquery.js
 
 # stylesheets
 #

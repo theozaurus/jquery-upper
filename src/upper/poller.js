@@ -37,6 +37,8 @@
           case 'starting':
             // It's failed to track the upload
             // No progress bar will be available
+            // Skip to processing stage
+            result.uploaded();
             break;
           case 'uploading':
             // Tracking
@@ -50,6 +52,9 @@
             } else {
               result.uploading();
             }
+            break;
+          case 'done':
+            result.uploaded();
             break;
           case 'error':
             result.errored();

@@ -1,2 +1,2 @@
 //= stub jquery
-//= require ../src/upper
+//= require ../src/jquery.upper.js

@@ -27,12 +27,7 @@ describe("Result", function() {
 
     it("should store state", function(){
       expect(subject).toTakeStringOptionFor('state');
-      expect(subject).toHaveDefaultFor('state','uploading');
-    });
-
-    it("should store name", function(){
-      expect(subject).toTakeStringOptionFor('name');
-      expect(subject).toHaveDefaultFor('name','');
+      expect(subject).toHaveDefaultFor('state','started');
     });
 
   });

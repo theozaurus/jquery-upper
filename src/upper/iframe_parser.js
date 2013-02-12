@@ -46,7 +46,7 @@
         if(r){
           return r.message || null;
         } else {
-          return jQuery(response).text();
+          return jQuery("<div>"+that.response()+"</div>").text().trim();
         }
       };
 
